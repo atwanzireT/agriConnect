@@ -105,47 +105,22 @@ class FarmerProfile(models.Model):
     is_group = models.BooleanField(default=False, verbose_name=_("Farmer Group/Cooperative"))
     
     # Fields for individual farmers
-    farm_size = models.DecimalField(
-        max_digits=10, 
-        decimal_places=2,
-        blank=True,
-        null=True
-    )
-    farm_size_unit = models.CharField(
-        max_length=10, 
-        choices=FARM_UNITS, 
-        default='acres',
-        blank=True
-    )
+    farm_size = models.DecimalField(max_digits=10,  decimal_places=2, blank=True, null=True)
+    farm_size_unit = models.CharField(max_length=10, choices=FARM_UNITS, default='acres',blank=True)
     years_of_experience = models.PositiveIntegerField(blank=True, null=True)
     
     # Fields for farmer groups
-    group_name = models.CharField(
-        max_length=200,
-        blank=True,
-        null=True,
-        verbose_name=_("Group/Cooperative Name")
-    )
-    group_registration_number = models.CharField(
-        max_length=100,
-        blank=True,
-        null=True,
-        verbose_name=_("Registration Number")
-    )
-    group_members_count = models.PositiveIntegerField(
-        blank=True,
-        null=True,
-        verbose_name=_("Number of Members")
-    )
-    group_formation_date = models.DateField(
-        blank=True,
-        null=True,
-        verbose_name=_("Formation Date")
-    )
+    group_name = models.CharField(max_length=200,blank=True,null=True,
+                                  verbose_name=_("Group/Cooperative Name"))
+    group_registration_number = models.CharField(max_length=100,blank=True,null=True,
+        verbose_name=_("Registration Number"))
+    group_members_count = models.PositiveIntegerField(blank=True,null=True,
+                                                      verbose_name=_("Number of Members"))
+    group_formation_date = models.DateField(blank=True,null=True,
+        verbose_name=_("Formation Date"))
     
     # Common fields for both
     crop_types = models.ManyToManyField('produce.Crop')
-    expected_harvest_date = models.DateField(blank=True, null=True)
     id_card_number = models.CharField(max_length=50, blank=True)
     certification = models.CharField(max_length=100, blank=True)
     contact_person = models.CharField(max_length=100, blank=True)
